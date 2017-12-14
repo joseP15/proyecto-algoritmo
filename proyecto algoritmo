@@ -1,0 +1,1337 @@
+# proyecto-algoritmo
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h"
+#include "venta.h"
+#include "cliente.h"
+#include "reserva.h"
+#include "especie.h"
+
+using namespace std;
+int menu_Administrador();
+int menu_Usuario();
+int menuArchivos();
+int menuEmpresa();
+int menuReserva();
+int menuEspecie();
+int menuVenta();
+//int menuCliente();
+
+void main()
+{
+	system("color 0F");
+	int opcion, op;
+	int clave=1234, contrasena;
+	do{
+		system("CLS");
+		cout<<"---------WELCOME TO ECO-SOLVER----------"<<endl;
+		cout<<"1.- Ingresar como Admin"<<endl;
+		cout<<"2.- Ingresar como Usuario"<<endl;
+		cout<<"0.- Salir"<<endl;
+		cout<<"Digite una opcion: ";
+		cin>>opcion;
+	switch(opcion)
+		{
+		case 1: system("CLS");{
+			cout<<"ingresar contrasena: ";
+			cin>>contrasena;
+			if (contrasena==clave){
+				cout<<"contrasena correcta!!"<<endl;
+				do{
+				op=menu_Administrador();
+				}while(op!=0);break;
+		}	
+		else {cout<<"contrasena incorrecta :( ";}
+		}getch(); break;
+
+   case 2: system("CLS");
+	   do{
+	   op=menu_Usuario();
+	   }while(op!=0);break;
+
+	case 0: break;
+	default: cout<<"OPCION INVALIDA";
+	}
+	}while(opcion!=0);
+	getch();
+	//menuArchivos();
+}
+
+int menuArchivos()
+{
+	int opcion,op;
+	do{
+		system("CLS");
+		cout<<"*******************************ARCHIVOS******************************"<<endl;
+		cout<<"1. CLIENTE"<<endl;
+		cout<<"2. RESERVAS"<<endl;
+		cout<<"3. ESPECIES"<<endl;
+		cout<<"4. VENTAS"<<endl;
+		//cout<<"5. CLIENTE"<<endl;
+		cout<<"0. ATRAS"<<endl;
+		//opcion=generarOpcion();
+		cout<<"Ingrese una opcion:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: do{
+					op=menuEmpresa();
+				}while(op!=0);break;
+		case 2: do{
+					op=menuReserva();
+				}while(op!=0);break;
+		case 3: do{
+					op=menuEspecie();
+				}while(op!=0);break;
+		case 4: do{
+					op=menuVenta();
+				}while(op!=0);break;
+		/*case 5: do{
+					op=menuCliente();
+				}while(op!=0);break;*/
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}
+int menuEmpresa()
+{
+	
+	int opcion;
+	do{
+		system("CLS");
+		cout<<"****************CLIENTE****************"<<endl;
+		cout<<"1. CREAR ARCHIVO"<<endl;
+		cout<<"2. ADICIONAR"<<endl;
+		cout<<"3. LISTAR"<<endl;
+		cout<<"4. BUSCAR"<<endl;
+		cout<<"5. MODIFICAR"<<endl;
+		cout<<"6. BORRAR "<<endl;
+		cout<<"0. ATRAS"<<endl;
+		cout<<"OPCION:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");crearArchivoEmpresa();getch();break;
+		case 2: system("CLS");listarEmpresa();adicionarEmpresa();getch();break;
+		case 3: system("CLS");listarEmpresa();getch();break;
+		case 4: system("CLS");consultaEmpresa();getch();break;
+		case 5: system("CLS");modificarEmpresa();getch();break;
+		case 6: system("CLS");borrarEmpresa();getch();break;
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}
+int menuReserva()
+{
+	
+	int opcion;
+	do{
+		system("CLS");
+		cout<<"****************RESERVAS***************"<<endl;
+		cout<<"1. CREAR ARCHIVO"<<endl;
+		cout<<"2. ADICIONAR"<<endl;
+		cout<<"3. LISTAR"<<endl;
+		cout<<"4. BUSCAR"<<endl;
+		cout<<"5. MODIFICAR"<<endl;
+		cout<<"6. BORRAR "<<endl;
+		cout<<"0. ATRAS"<<endl;
+		cout<<"OPCION:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");crearArchivoReserva();getch();break;
+		case 2: system("CLS");listarReserva();adicionarReserva();getch();break;
+		case 3: system("CLS");listarReserva();getch();break;
+		case 4: system("CLS");consultaReserva();getch();break;
+		case 5: system("CLS");modificarReserva();getch();break;
+		case 6: system("CLS");borrarReserva();getch();break;
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}
+int menuEspecie()
+{
+	
+	int opcion;
+	do{
+		system("CLS");
+		cout<<"****************ESPECIE****************"<<endl;
+		cout<<"1. CREAR ARCHIVO"<<endl;
+		cout<<"2. ADICIONAR"<<endl;
+		cout<<"3. LISTAR"<<endl;
+		cout<<"4. BUSCAR"<<endl;
+		cout<<"5. MODIFICAR"<<endl;
+		cout<<"6. BORRAR "<<endl;
+		cout<<"0. ATRAS"<<endl;
+		cout<<"OPCION:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");crearArchivoEspecie();getch();break;
+		case 2: system("CLS");listarEspecie();adicionarEspecie();getch();break;
+		case 3: system("CLS");listarEspecie();getch();break;
+		case 4: system("CLS");consultaEspecie();getch();break;
+		case 5: system("CLS");modificarEspecie();getch();break;
+		case 6: system("CLS");borrarEspecie();getch();break;
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}
+int menuVenta()
+{
+	
+	int opcion;
+	do{
+		system("CLS");
+		cout<<"****************VENTAS****************"<<endl;
+		cout<<"1. CREAR ARCHIVO"<<endl;
+		cout<<"2. ADICIONAR"<<endl;
+		cout<<"3. LISTAR"<<endl;
+		cout<<"4. BUSCAR"<<endl;
+		cout<<"5. MODIFICAR"<<endl;
+		cout<<"6. BORRAR "<<endl;
+		cout<<"0. ATRAS"<<endl;
+		cout<<"OPCION:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");crearArchivoVenta();getch();break;
+		case 2: system("CLS");listarVenta();adicionarVenta();getch();break;
+		case 3: system("CLS");listarVenta();getch();break;
+		case 4: system("CLS");consultaVenta();getch();break;
+		case 5: system("CLS");modificarVenta();getch();break;
+		case 6: system("CLS");borrarVenta();getch();break;
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}
+int menu_Administrador()
+{
+	int opcion, op;
+	do{
+	system("CLS");
+	cout<<"---------ADMINISTRADOR ---------"<<endl;
+	cout<<"1.- ACCESO A BASE DE DATOS "<<endl;
+	cout<<"2.- ACCESO A REPORTES "<<endl;
+	cout<<"3.- ACCESO A DATOS ECONOMICOS"<<endl;
+	cout<<"0.- atras"<<endl;
+	cout<<"Digite una opcion: ";
+	cin>>opcion;
+	switch(opcion)
+	{
+	case 1:system("CLS");
+		do{
+			op=menuArchivos();
+			}while(op!=0);break;
+	case 0: return 0; break;
+	default:cout<<"opcion Incorrecta";
+	}
+	}while (opcion!=0);
+	return 1;
+}
+int menu_Usuario()
+{
+	int opcion,op;
+	do{
+		system("CLS");
+		cout<<"------------USUARIO--------------"<<endl;
+		cout<<"1.- BASE DE DATOS RESERVAS "<<endl;
+		cout<<"2.- BASE DE DATOS ESPECIE  "<<endl;
+		cout<<"0.- ATRAS"<<endl;
+		cout<<" Digite una Opcion"<<endl;
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");
+			do{
+				op=menuReserva();
+			}while(op!=0);break;
+		case 2: system("CLS");
+			do{
+				op=menuEspecie();
+			}while (op!=0);break;
+		case 0: return 0; break;
+		default: "OPCION INCORRECTA";
+		}
+	
+	}while (opcion!=0);
+	return 1;
+}
+
+
+
+
+/*int menuCliente()
+{
+	
+	int opcion;
+	do{
+		system("CLS");
+		cout<<"****************CLIENTE****************"<<endl;
+		cout<<"1. CREAR ARCHIVO"<<endl;
+		cout<<"2. ADICIONAR"<<endl;
+		cout<<"3. LISTAR"<<endl;
+		/*cout<<"4. BUSCAR"<<endl;
+		cout<<"5. MODIFICAR"<<endl;
+		cout<<"6. BORRAR "<<endl;
+		cout<<"0. ATRAS"<<endl;
+		cout<<"OPCION:  ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: system("CLS");crearArchivoCliente();getch();break;
+		case 2: system("CLS");listarCliente();adicionarCliente();getch();break;
+		case 3: system("CLS");listarCliente();getch();break;
+		//case 4: system("CLS");consultaEspecie();getch();break;
+		//case 5: system("CLS");modificarEspecie();getch();break;
+		//case 6: system("CLS");borrarEspecie();getch();break;
+		case 0: return 0;break;
+		default: cout<<"OPCION INCORRECTA";
+		}
+	}while(opcion!=0);
+	return 1;
+}*/
+
+
+using namespace std;
+
+void crearArchivoVenta();
+void adicionarVenta();
+void listarVenta();
+void consultaVenta();
+void modificarVenta();
+//void borrarVenta();
+
+
+struct RegistroVenta{
+	int IdVenta;
+	int IdEmpresa;
+	int telefono;
+	int estadoVenta;
+};
+	
+
+void crearArchivoVenta()
+{
+	FILE *alias;
+	alias=fopen("VENTAS.dat","wb");
+	fclose(alias);
+	cout<<"Archivo Creado exitosamente";
+}
+void adicionarVenta()
+{
+	FILE *alias;
+	//RegistroReserva registro;
+	RegistroVenta registro;
+	alias=fopen("VENTAS.dat","ab");
+
+	cout<<"ingresar el Id de la Venta ";
+	cin>>registro.IdVenta;
+	//cin.ignore()
+	cout<<"ingrese el Id de la Empresa: ";
+	cin>>registro.IdEmpresa;
+	
+	cout<<"ingrese el telefono del cliente ";
+	cin>>registro.telefono;
+
+
+	registro.estadoVenta=0;
+	fwrite(&registro,sizeof(registro),1,alias);
+	
+	cout<<"-------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"Venta añadida correctamente!! ";
+	fclose(alias);
+}
+void listarVenta()
+{	
+	int c=0;
+	FILE *alias;
+	RegistroVenta registro;
+	//RegistroReserva1 registro1;
+	alias=fopen("Ventas.dat","rb");
+	if(alias==NULL)
+	{
+		cout<<"Error con el Archivo";
+	}
+	else
+	{ 
+		cout<<endl<<"--------------------------------------------------------------------------------------------------";
+		cout<<endl<<"n:\ID VENTA\tID EMPRESA\tTELEFONO"; 
+		cout<<endl<<"--------------------------------------------------------------------------------------------------"<<endl;
+		fread(&registro,sizeof(registro),1,alias);
+		while(feof(alias)==false)
+		{
+			c++;
+			if(registro.estadoVenta==0)
+			{
+				cout<<endl<<c<<" "<<"\t"<<registro.IdVenta<<"\t"<<registro.IdEmpresa<<"\t"<<registro.telefono;
+			}
+			fread(&registro,sizeof(registro),1,alias);
+			//fseek(alias,(registro)*sizeof(registro),SEEK_SET);
+		}
+		fclose(alias);
+
+	}
+}
+void consultaVenta()
+{	
+    FILE *alias;
+	int numeroRegistro;
+	RegistroVenta registro;
+	alias=fopen("Ventas.dat","rb");
+	listarVenta();
+	cout<<endl<<"ingresar el numero de registro que desea consultar"<<endl;
+	cin>>numeroRegistro;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoVenta==0)
+			{
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"n:\tID VENTA\tID EMPRESA\tTELEFONO";
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"\t"<<registro.IdVenta<<"\t"<<registro.IdEmpresa<<"\t"<<registro.telefono;
+			}
+			else
+			{
+				cout<<"El registro fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"El registro no existe";
+		}
+		fclose(alias);
+	}
+}
+void modificarVenta()
+{	
+	FILE *alias;
+	RegistroVenta registro;
+	int numeroRegistro;
+	listarVenta();
+	cout<<"ingresar el numero de registro que desea modificar"<<endl;
+	cin>>numeroRegistro;
+	alias=fopen("Ventas.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(!feof(alias))
+		{
+			if(registro.estadoVenta==0)
+			{
+				cout<<endl<<"--------------------------------------------------------------------------------------------------";
+				cout<<endl<<"n:\ID VENTA\tID EMPRESA\tTELEFONO"; 
+				cout<<endl<<"--------------------------------------------------------------------------------------------------"<<endl;
+				cout<<registro.IdVenta<<"	\t	"<<registro.IdEmpresa<<"	\t	"<<registro.telefono;
+				cout<<endl<<endl<<"Desea modificar el registro:  ";
+				//cin.ignore();
+				cin>>respuesta;
+
+						if((respuesta=='s')||(respuesta=='S'))
+							{
+								cout<<"ingresar el Id de la Venta ";
+								cin>>registro.IdVenta;
+
+								cin.ignore();
+
+								cout<<"ingrese el Id de la empresa ";
+								cin>>registro.IdEmpresa;
+
+	
+								cout<<"ingrese el numero de telefono ";
+								cin>>registro.telefono;
+							}
+					fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+					fwrite(&registro,sizeof(registro),1,alias);
+					cout<<endl<<"Registro  modificado correctamente";
+				}
+				else
+				{
+					if((respuesta=='n')||(respuesta=='N'))
+					{
+						cout<<"Registro no se modificara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro  ya fue eliminado";
+			}
+
+		fclose(alias);
+	}
+}
+void borrarVenta()
+{
+	int numeroRegistro;
+	listarVenta();
+	cout<<endl<<"Ingresar el numero de Registro que desea eliminar:  ";
+	cin>>numeroRegistro;
+	FILE *alias;
+	RegistroVenta registro;
+	alias=fopen("Ventas.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoVenta==0)
+			{
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<"n:\ID VENTA\tID EMPRESA\tTELEFONO"; 
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<"\t"<<registro.IdVenta<<"\t"<<registro.IdEmpresa<<"\t"<<registro.telefono;
+				cout<<endl<<endl<<"Desea eliminar el registro? :  ";
+				cin.ignore();
+				cin>>respuesta;
+				if((respuesta=='s')|| (respuesta=='S'))
+				{
+					registro.estadoVenta=1;
+					fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+					fwrite(&registro,sizeof(registro),1,alias);
+					cout<<endl<<"Cliente borrado correctamente";
+				}
+				else
+				{
+					if(respuesta=='n'|| respuesta=='N')
+					{
+						cout<<"Registro no se borrara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro ya fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"Registro no existe";
+		}
+		fclose(alias);
+	}
+}
+void crearArchivoEmpresa();
+void adicionarEmpresa();
+void listarEmpresa();
+void consultaEmpresa();
+void modificarEmpresa();
+//void borrarEmpresa();
+
+
+struct RegistroEmpresa
+{
+	int idEmpresa;//PRIMARY KEY
+	string nombreEmpresa;
+	int estadoEmpresa;
+};
+struct RegistroEmpresa1
+{
+	int idEmpresa;//PRIMARY KEY
+	char nombreEmpresa[30];
+	int estadoEmpresa;
+};
+
+void crearArchivoEmpresa()
+{
+	FILE *alias;
+	alias=fopen("Empresa.dat","wb");
+	fclose(alias);
+	cout<<"Archivo Creado exitosamente";
+}
+void adicionarEmpresa()
+{
+	FILE *alias;
+	RegistroEmpresa registro;
+	RegistroEmpresa1 registro1;
+	alias=fopen("Empresa.dat","ab");
+
+	cout<<"ingresar el Id de la Empresa: ";
+	cin>>registro1.idEmpresa;
+
+	cin.ignore();
+	cout<<"ingrese el Nombre de la Empresa: ";
+	getline(cin,registro.nombreEmpresa);
+	strcpy(registro1.nombreEmpresa,registro.nombreEmpresa.c_str());
+	
+
+	registro1.estadoEmpresa=0;
+	fwrite(&registro1,sizeof(registro1),1,alias);
+
+	cout<<"-------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"Empresa añadida correctamente!! ";
+	fclose(alias);
+}
+void listarEmpresa()
+{	
+	FILE *alias;
+	RegistroEmpresa1 registro1;
+	int c=0;
+	alias=fopen("Empresa.dat","rb");
+	if(alias==NULL)
+	{
+		cout<<"Error con el Archivo";
+	}
+	else
+	{
+		cout<<endl<<"------------------------------------------------------";
+		cout<<endl<<"ID EMPRESA\tNOMBRE"; 
+		cout<<endl<<"------------------------------------------------------"<<endl;
+		fread(&registro1,sizeof(registro1),1,alias);
+	//	fread(&registroRes,sizeof(registroRes),1,alias1);
+		while(!feof(alias)) //&& !feof(alias1))
+		{
+			c++;
+			if((registro1.estadoEmpresa)==0)
+			{
+				cout<<endl<<c<<" "<<registro1.idEmpresa<<"\t"<<registro1.nombreEmpresa<<endl;
+			}
+			fread(&registro1,sizeof(registro1),1,alias);
+		}
+		fclose(alias);
+	}
+}
+void consultaEmpresa()
+{	
+    FILE *alias;
+	int numeroRegistro;
+	RegistroEmpresa1 registro;
+	alias=fopen("Empresa.dat","rb");
+	listarEmpresa();
+	cout<<endl<<"ingresar el numero de registro que desea consultar"<<endl;
+	cin>>numeroRegistro;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoEmpresa==0)
+			{
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"ID EMPRESA\tNOMBRE";
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<" "<<registro.idEmpresa<<"\t"<<registro.nombreEmpresa<<endl;
+			}
+			else
+			{
+				cout<<"El registro fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"El registro no existe";
+		}
+		fclose(alias);
+	}
+}
+
+
+void modificarEmpresa()
+{
+	FILE *alias;
+	RegistroEmpresa registro;
+	RegistroEmpresa1 registro1;
+	int numeroRegistro;
+	listarEmpresa();
+	cout<<"ingresar el numero de registro que desea modificar"<<endl;
+	cin>>numeroRegistro;
+	alias=fopen("Empresa.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+		fread(&registro1,sizeof(registro1),1,alias);
+		if(!feof(alias))
+		{
+			if(registro1.estadoEmpresa==0)
+			{
+				cout<<endl<<"---------------------------------------------------";
+				cout<<endl<<"n:   ID RESERVA               NOMBRE				"; 
+				cout<<endl<<"--------------------------------------------------	";
+				cout<<registro1.idEmpresa<<"	\t	"<<registro1.nombreEmpresa;
+				cout<<endl<<endl<<"Desea modificar el registro:  ";
+				//cin.ignore();
+				cin>>respuesta;
+						if((respuesta=='s')||(respuesta=='S'))
+							{
+								cout<<"ingresar el Id de la Empresa: ";
+								cin>>registro.idEmpresa;
+								registro1.idEmpresa=registro.idEmpresa;
+
+								cin.ignore();
+
+								cout<<"ingrese el Nombre de la Empresa: ";
+								getline(cin,registro.nombreEmpresa);
+								strcpy(registro1.nombreEmpresa,registro.nombreEmpresa.c_str());
+							}
+					fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+					fwrite(&registro1,sizeof(registro1),1,alias);
+					cout<<endl<<"Registro modificado correctamente";
+				}
+				else
+				{
+					if((respuesta=='n')||(respuesta=='N'))
+					{
+						cout<<"Registro no se modificara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro  ya fue eliminado";
+			}
+
+		fclose(alias);
+	}
+}
+void borrarEmpresa()
+{
+	int numeroRegistro;
+	listarEmpresa();
+	cout<<endl<<"Ingresar el numero de Registro que desea eliminar:  ";
+	cin>>numeroRegistro;
+	FILE *alias;
+	RegistroEmpresa1 registro;
+	alias=fopen("Empresa.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoEmpresa ==0)
+			{
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<"ID EMPRESA\tNOMBRE";
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<" "<<registro.idEmpresa<<"\t"<<registro.nombreEmpresa<<endl;
+				cout<<endl<<endl<<"Desea eliminar el registro? :  ";
+				cin.ignore();
+				cin>>respuesta;
+				if((respuesta=='s')|| (respuesta=='S'))
+				{
+					registro.estadoEmpresa=1;
+					fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+					fwrite(&registro,sizeof(registro),1,alias);
+					cout<<endl<<"Cliente borrado correctamente";
+				}
+				else
+				{
+					if(respuesta=='n'|| respuesta=='N')
+					{
+						cout<<"Registro no se borrara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro ya fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"Registro no existe";
+		}
+		fclose(alias);
+	}
+}
+void crearArchivoReserva();
+void adicionarReserva();
+void listarReserva();
+void consultaReserva();
+void modificarReserva();
+void borrarReserva();
+
+struct RegistroReserva
+{
+	int IdReserva;
+	string NombreReserva;
+	string NombreDpto;
+	float extensionReserva;
+	int estadoReserva;
+};
+struct RegistroReserva1
+{
+	int IdReserva;
+	char NombreReserva[30];
+	char NombreDpto[30];
+	float extensionReserva;
+	int estadoReserva;
+};
+
+void crearArchivoReserva()
+{
+	FILE *alias;
+	alias=fopen("Reservas.dat","wb");
+	fclose(alias);
+	cout<<"Archivo Creado exitosamente";
+}
+void adicionarReserva()
+{
+	FILE *alias;
+	RegistroReserva registro;
+	RegistroReserva1 registro1;
+
+	alias=fopen("Reservas.dat","ab");
+
+	cout<<"ingresar el Id de la reserva: ";
+	cin>>registro.IdReserva;
+	registro1.IdReserva=registro.IdReserva;
+	cin.ignore();
+
+	cout<<"ingrese el Nombre de la Reserva: ";
+	getline(cin,registro.NombreReserva);
+	strcpy(registro1.NombreReserva,registro.NombreReserva.c_str());
+	
+	cout<<"ingrese el Nombre del Departamento: ";
+	getline(cin,registro.NombreDpto);
+	strcpy(registro1.NombreDpto,registro.NombreDpto.c_str());
+
+	
+	cout<<"ingrese la extension del parque o reserva (km2) : ";
+	cin>>registro.extensionReserva;
+	registro1.extensionReserva=registro.extensionReserva;
+
+
+	registro1.estadoReserva=0;
+	fwrite(&registro1,sizeof(registro1),1,alias);
+	
+	cout<<"-------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"Reserva añadida correctamente!! ";
+	fclose(alias);
+}
+void listarReserva()
+{	
+	int c=0;
+	FILE *alias;
+	RegistroReserva registro;
+	RegistroReserva1 registro1;
+	alias=fopen("Reservas.dat","rb");
+	if(alias==NULL)
+	{
+		cout<<"Error con el Archivo";
+	}
+	else
+	{
+		cout<<endl<<"--------------------------------------------------------------------------------------------------";
+		cout<<endl<<"n:   ID RESERVA               NOMBRE               DEPARTAMENTO              EXTENSION"; 
+		cout<<endl<<"--------------------------------------------------------------------------------------------------"<<endl;
+		fread(&registro1,sizeof(registro1),1,alias);
+		while(feof(alias)==false)
+		{
+			c++;
+			if(registro1.estadoReserva==0)
+			{
+				cout<<endl<<c<<" "<<"	"<<registro1.IdReserva<<"	\t	"<<registro1.NombreReserva<<" 	\t	"<<registro1.NombreDpto<<"	\t	"<<registro1.extensionReserva;
+			}
+			fread(&registro1,sizeof(registro1),1,alias);
+			//fseek(alias,(registro)*sizeof(registro),SEEK_SET);
+		}
+		fclose(alias);
+
+	}
+}
+void consultaReserva()
+{	
+	FILE *alias;
+	int numeroRegistro;
+	RegistroReserva1 registro;
+	alias=fopen("Reservas.dat","rb");
+	listarReserva();
+	cout<<endl<<"ingresar el numero de registro que desea consultar"<<endl;
+	cin>>numeroRegistro;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoReserva==0)
+			{
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"n:   ID RESERVA               NOMBRE               DEPARTAMENTO              EXTENSION ";
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"	"<<registro.IdReserva<<"	\t	"<<registro.NombreReserva<<" 	\t	"<<registro.NombreDpto<<"	\t	"<<registro.extensionReserva;
+			}
+			else
+			{
+				cout<<"El registro fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"El registro no existe";
+		}
+		fclose(alias);
+	}
+}
+void modificarReserva()
+{	
+	FILE *alias;
+	RegistroReserva registro;
+	RegistroReserva1 registro1;
+	int numeroRegistro;
+	listarReserva();
+	cout<<"ingresar el numero de registro que desea modificar"<<endl;
+	cin>>numeroRegistro;
+	alias=fopen("Reservas.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+		fread(&registro1,sizeof(registro1),1,alias);
+		if(!feof(alias))
+		{
+			if(registro1.estadoReserva==0)
+			{
+				cout<<endl<<"--------------------------------------------------------------------------------------------------";
+				cout<<endl<<"n:   ID RESERVA               NOMBRE               DEPARTAMENTO              EXTENSION"; 
+				cout<<endl<<"--------------------------------------------------------------------------------------------------";
+				cout<<registro1.IdReserva<<"			"<<registro1.NombreReserva<<"		"<<registro1.NombreDpto<<"		"<<registro1.extensionReserva;
+				cout<<endl<<endl<<"Desea modificar el registro:  ";
+				cin.ignore();
+				cin>>respuesta;
+
+						if((respuesta=='s')||(respuesta=='S'))
+							{
+								cout<<"ingresar el Id de la reserva: ";
+								cin>>registro.IdReserva;
+								registro1.IdReserva=registro.IdReserva;
+
+								cin.ignore();
+
+								cout<<"ingrese el Nombre de la Reserva: ";
+								getline(cin,registro.NombreReserva);
+								strcpy(registro1.NombreReserva,registro.NombreReserva.c_str());
+
+	
+								cout<<"ingrese el Nombre del Departamento: ";
+								getline(cin,registro.NombreDpto);
+								strcpy(registro1.NombreDpto,registro.NombreDpto.c_str());
+
+	
+								cout<<"ingrese la extension del parque o reserva (km2) : ";
+								cin>>registro.extensionReserva;
+								registro1.extensionReserva=registro.extensionReserva;
+							}
+					fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+					fwrite(&registro1,sizeof(registro1),1,alias);
+					cout<<endl<<"Registro  modificado correctamente";
+				}
+				else
+				{
+					if((respuesta=='n')||(respuesta=='N'))
+					{
+						cout<<"Registro no se modificara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro  ya fue eliminado";
+			}
+
+		fclose(alias);
+	}
+}
+void borrarReserva()
+{
+	int numeroRegistro;
+	listarReserva();
+	cout<<endl<<"Ingresar el numero de Registro que desea eliminar:  ";
+	cin>>numeroRegistro;
+	FILE *alias;
+	RegistroReserva1 registro;
+	alias=fopen("Reservas.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estadoReserva ==0)
+			{
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<"n:\tID RESERVA \t NOMBRE  \t  DEPARTAMENTO   \t   EXTENSION"; 
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<" "<<registro.IdReserva<<"	\t	"<<registro.NombreReserva<<" 	\t	"<<registro.NombreDpto<<"	\t	"<<registro.extensionReserva;
+				cout<<endl<<endl<<"Desea eliminar el registro? :  ";
+				cin.ignore();
+				cin>>respuesta;
+				if((respuesta=='s')|| (respuesta=='S'))
+				{
+					registro.estadoReserva=1;
+					fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+					fwrite(&registro,sizeof(registro),1,alias);
+					cout<<endl<<"Reserva borrado correctamente";
+				}
+				else
+				{
+					if(respuesta=='n'|| respuesta=='N')
+					{
+						cout<<"Registro no se borrara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro ya fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"Registro no existe";
+		}
+		fclose(alias);
+	}
+}
+oid crearArchivoEspecie();
+void adicionarEspecie();
+void listarEspecie();
+void consultaEspecie();
+void modificarEspecie();
+void borrarEspecie();
+
+struct RegistroEspecie
+{
+	int IdReserva;
+	int IdEspecie;
+	string NombreEspecie;
+	string tipoEspecie;
+	float poblacion;
+	string estadoEspecie;
+	string nombreReserva;
+	int estado;
+};
+struct RegistroEspecie1
+{
+	int IdReserva;
+	int IdEspecie;
+	char NombreEspecie[30];
+	char tipoEspecie[30];
+	float poblacion;
+	char estadoEspecie[30];
+	char nombreReserva[30];
+	int estado;
+};
+
+void crearArchivoEspecie()
+{
+	FILE *alias;
+	alias=fopen("Especie.dat","wb");
+	fclose(alias);
+	cout<<"Archivo Creado exitosamente";
+}
+void adicionarEspecie()
+{
+	FILE *alias;
+	RegistroEspecie registro;
+	RegistroEspecie1 registro1;
+	alias=fopen("Especie.dat","ab");
+
+	cout<<"ingresar el Id de la reserva: ";
+	cin>>registro.IdReserva;
+	registro1.IdReserva=registro.IdReserva;
+
+	cout<<"ingresar el Id de la Especie: ";
+	cin>>registro.IdEspecie;
+	registro1.IdEspecie=registro.IdEspecie;
+
+	cin.ignore();
+
+	cout<<"ingrese el Nombre de la Especie: ";
+	getline(cin,registro.NombreEspecie);
+	strcpy(registro1.NombreEspecie,registro.NombreEspecie.c_str());
+	
+	cout<<"ingrese el tipo de Especie:  ";
+	getline(cin,registro.tipoEspecie);
+	strcpy(registro1.tipoEspecie,registro.tipoEspecie.c_str());
+	
+	cout<<"ingrese la cantidad de poblacion (macho y hembra):  ";
+	cin>>registro.poblacion;
+	registro1.poblacion=registro.poblacion;
+		
+	cout<<"ingrese el estado de la Especie: ";
+	getline(cin,registro.estadoEspecie);
+	strcpy(registro1.estadoEspecie,registro.estadoEspecie.c_str());
+
+	cout<<"ingrese el nombre de la reserva: ";
+	getline(cin,registro.nombreReserva);
+	strcpy(registro1.nombreReserva,registro.nombreReserva.c_str());
+
+	
+	registro1.estado=0;
+	fwrite(&registro1,sizeof(registro1),1,alias);
+
+	cout<<"-------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"Especie añadida correctamente!! ";
+	fclose(alias);
+}
+void listarEspecie()
+{
+	FILE *alias;
+	RegistroEspecie registro;
+	RegistroEspecie1 registro1;
+	int c=0;
+	alias=fopen("Especie.dat","rb");
+	if(alias==NULL)
+	{
+		cout<<"Error con el Archivo";
+	}
+	else
+	{
+		cout<<endl<<"-------------------------------------------------------------------------------------------";
+		cout<<endl<<"n:\tID RESERVA\tID ESPECIE\tNOMBRE\tTIPO DE ESPECIE\tPOBLACION\tESTADO\tNOMBRE RESERVA"; 
+		cout<<endl<<"-------------------------------------------------------------------------------------------";
+		fread(&registro1,sizeof(registro1),1,alias);
+		while(!feof(alias))
+		{
+			c++;
+			if(registro1.estado==0)
+			{
+				cout<<endl<<c<<" "<<registro1.IdReserva<<"   \t   "<<registro1.IdEspecie<<"   \t    "<<registro1.NombreEspecie<<"      \t      "<<registro1.tipoEspecie<<"     \t     "<<registro1.poblacion<<"      \t      "<<registro1.estado<<"      \t      "<<registro1.nombreReserva;
+			}
+			fread(&registro1,sizeof(registro1),1,alias);
+		}
+		fclose(alias);
+
+	}
+}
+void consultaEspecie()
+{
+    FILE *alias;
+	int numeroRegistro;
+	RegistroEspecie1 registro;
+	alias=fopen("Especie.dat","rb");
+	listarEspecie();
+	cout<<endl<<"ingresar el numero de registro que desea consultar"<<endl;
+	cin>>numeroRegistro;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estado==0)
+			{
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<"n:\tID RESERVA\tID ESPECIE\tNOMBRE\tTIPO DE ESPECIE\tPOBLACION\tESTADO\tNOMBRE RESERVA"; 
+				cout<<endl<<"---------------------------------------------------------------------------------------";
+				cout<<endl<<registro.IdReserva<<"   \t   "<<registro.IdEspecie<<"   \t    "<<registro.NombreEspecie<<"      \t      "<<registro.tipoEspecie<<"     \t     "<<registro.poblacion<<"      \t      "<<registro.estado<<"      \t      "<<registro.nombreReserva;
+			}
+			else
+			{
+				cout<<"El registro fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"El registro no existe";
+		}
+		fclose(alias);
+	}
+}
+
+void modificarEspecie()
+{
+	FILE *alias;
+	RegistroEspecie registro;
+	RegistroEspecie1 registro1;
+	int numeroRegistro;
+	listarEspecie();
+	cout<<"ingresar el numero de registro que desea modificar"<<endl;
+	cin>>numeroRegistro;
+	alias=fopen("Especie.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+		fread(&registro1,sizeof(registro1),1,alias);
+		if(!feof(alias))
+		{
+			if(registro1.estado==0)
+			{
+				cout<<endl<<"----------------------------------------------------------------------------------------------------------------------------------------------------------";
+				cout<<endl<<"n:   ID RESERVA        ID ESPECIE         NOMBRE				TIPO DE ESPECIE		    POBLACION              ESTADO			NOMBRE RESERVA"; 
+				cout<<endl<<"----------------------------------------------------------------------------------------------------------------------------------------------------------";
+				cout<<endl<<registro1.IdReserva<<"	\t	"<<registro1.IdEspecie<<"	\t	"<<registro1.NombreEspecie<<"	\t	"<<registro1.tipoEspecie<<"		/t		"<<registro1.poblacion<<"	\t	"<<registro1.estado<<"	\t	"<<registro1.nombreReserva;
+				cout<<endl<<endl<<"Desea modificar el registro:  ";
+				cin.ignore();
+				cin>>respuesta;
+
+						if((respuesta=='s')||(respuesta=='S'))
+							{
+								cout<<"ingresar el Id de la reserva: ";
+								cin>>registro.IdReserva;
+								registro1.IdReserva=registro.IdReserva;
+								cout<<"ingresar el Id de la Especie: ";
+								cin>>registro.IdEspecie;
+								registro1.IdEspecie=registro.IdEspecie;
+
+								cin.ignore();
+
+								cout<<"ingrese el Nombre de la Especie: ";
+								getline(cin,registro.NombreEspecie);
+								strcpy(registro1.NombreEspecie,registro.NombreEspecie.c_str());
+	
+								cout<<"ingrese el tipo de Especie:  ";
+								getline(cin,registro.tipoEspecie);
+								strcpy(registro1.tipoEspecie,registro.tipoEspecie.c_str());
+
+	
+								cout<<"ingrese la cantidad de poblacion (macho y hembra):  ";
+								cin>>registro.poblacion;
+								registro1.poblacion=registro.poblacion;
+		
+								cout<<"ingrese el estado de la Especie: ";
+								getline(cin,registro.estadoEspecie);
+								strcpy(registro1.estadoEspecie,registro.estadoEspecie.c_str());
+
+								cout<<"ingrese el nombre de la reserva: ";
+								getline(cin,registro.nombreReserva);
+								strcpy(registro1.nombreReserva,registro.nombreReserva.c_str());
+							}
+				fwrite(&registro1,sizeof(registro1),1,alias);
+				registro.estado=0;
+				cout<<"-------------------------------------------------------------------------------------------------------"<<endl;
+				cout<<"Especie añadida correctamente!! ";
+				fclose(alias);
+							}
+					fseek(alias,(numeroRegistro-1)*sizeof(registro1),SEEK_SET);
+					fwrite(&registro1,sizeof(registro1),1,alias);
+					cout<<endl<<"Registro  modificado correctamente";
+				}
+				else
+				{
+					if((respuesta=='n')||(respuesta=='N'))
+					{
+						cout<<"Registro no se modificara";
+					}
+		}
+
+		fclose(alias);
+	}
+}
+void borrarEspecie()
+{
+	int numeroRegistro;
+	listarEspecie();
+	cout<<endl<<"Ingresar el numero de Registro que desea eliminar:  ";
+	cin>>numeroRegistro;
+	FILE *alias;
+	RegistroEspecie1 registro;
+	alias=fopen("Especie.dat","r+b");
+	char respuesta;
+	if(alias==NULL)
+	{
+		cout<<"Error con el archivo";
+	}
+	else
+	{
+		fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+		fread(&registro,sizeof(registro),1,alias);
+		if(feof(alias)==false)
+		{
+			if(registro.estado==0)
+			{
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<"n:\tID RESERVA\tID ESPECIE\tNOMBRE\tTIPO DE ESPECIE\tPOBLACION\tESTADO\tNOMBRE RESERVA"; 
+				cout<<endl<<"----------------------------------------------";
+				cout<<endl<<" "<<registro.IdReserva<<"   \t   "<<registro.IdEspecie<<"   \t    "<<registro.NombreEspecie<<"      \t      "<<registro.tipoEspecie<<"     \t     "<<registro.poblacion<<"      \t      "<<registro.estado<<"      \t      "<<registro.nombreReserva;
+				cout<<endl<<endl<<"Desea eliminar el registro? :  ";
+				cin.ignore();
+				cin>>respuesta;
+				if((respuesta=='s')|| (respuesta=='S'))
+				{
+					registro.estado=1;
+					fseek(alias,(numeroRegistro-1)*sizeof(registro),SEEK_SET);
+					fwrite(&registro,sizeof(registro),1,alias);
+					cout<<endl<<"Especie borrado correctamente";
+				}
+				else
+				{
+					if(respuesta=='n'|| respuesta=='N')
+					{
+						cout<<"Registro no se borrara";
+					}
+				}
+			}
+			else
+			{
+				cout<<"Registro ya fue eliminado";
+			}
+		}
+		else
+		{
+			cout<<"Registro no existe";
+		}
+		fclose(alias);
+	}
+}
